@@ -1,48 +1,27 @@
-//nVampeta 
+//nJacquin 
 (function($) {
 	
-    var self = $.nVampeta = new function(){};
+    var self = $.nJacquin = new function(){};
 	
     $.extend(self, {
 
-    	nVampetaBackgrounds : [
-    		'http://www.away.com.br/nvampeta/bg1.png'
+    	nJacquinBackgrounds : [
+    		'http://www.away.com.br/nJacquin/bg1.png'
     	],
 
-        nVampetaImgs : [
-            'http://i.imgur.com/meT1G7T.jpg',
-            'http://i.imgur.com/scpspdR.jpg',
-            'http://i.imgur.com/097JazL.jpg',
-            'http://i.imgur.com/8CzMjuC.jpg',
-            'http://i.imgur.com/wSDz4VJ.jpg',
-            'http://i.imgur.com/B8tOwat.jpg',
-            'http://i.imgur.com/TVmRwJ4.jpg',
-            'http://i.imgur.com/CM1nPI8.jpg',
-            'http://i.imgur.com/xhcfSst.jpg',
-            'http://i.imgur.com/rangHmZ.jpg',
-            'http://i.imgur.com/edVhcjS.jpg',
-            'http://i.imgur.com/WdPhUqm.jpg',
-            'http://i.imgur.com/n1BBZlf.jpg',
-            'http://i.imgur.com/xIEoPac.jpg',
-            'http://i.imgur.com/yy3DwnX.gif',
-            'http://i.imgur.com/hd0BUJm.jpg',
-            'http://i.imgur.com/HE4dSil.jpg',
-            'http://i.imgur.com/A3JJUut.jpg',
-            'http://i.imgur.com/i4XKBvD.jpg',
-            'http://i.imgur.com/XveMAVe.jpg',
-            'http://i.imgur.com/epuUjge.jpg',
-            'http://i.imgur.com/IT1VLti.jpg',
-            'http://i.imgur.com/l412AZq.jpg',
-            'http://i.imgur.com/sPdWGaK.jpg',
-            'http://i.imgur.com/PQ3bg1q.jpg',
-            'http://i.imgur.com/DeQ0qo3.jpg',
-            'http://i.imgur.com/wFi3HXs.jpg',
-            'http://i.imgur.com/PCm1v57.jpg',
-            'http://i.imgur.com/Oxs2AHZ.jpg',
-            'http://i.imgur.com/SKKwYtQ.jpg',
-            'http://i.imgur.com/rfSvENU.jpg',
-            'http://i.imgur.com/qguMH00.jpg',
-            'http://i.imgur.com/4Jh46kV.jpg'
+        nJacquinImgs : [
+            'http://imagem.band.com.br/f_369062.jpg',
+            'http://www.gazetadopovo.com.br/bomgourmet/wp-content/uploads/2016/12/Erick-Jacquin.jpg',
+            'https://conteudo.imguol.com.br/blogs/28/files/2016/05/jacquin-1442338756458_786x550.jpg',
+            'https://observatoriodatelevisao.bol.uol.com.br/wp-content/uploads/2015/09/erick-jacquin.jpg',
+            'http://conteudo.imguol.com.br/c/entretenimento/2015/06/10/9jun2015--erick-jacquin-come-pedaco-de-forma-esquecida-por-participante-do-masterchef-na-sobremesa-1433907525557_956x500.jpg',
+            'http://static1.purebreak.com.br/articles/2/15/43/2/@/76214-erick-jacquin-do-masterchef-brasil-diapo-3.jpg',
+            'https://pbs.twimg.com/media/CeLR6keWwAIhsNE.jpg',
+            'http://static1.purebreak.com.br/articles/5/18/56/5/@/93213-o-jurado-erick-jacquin-do-masterchef-diapo-2.png',
+            'http://i0.statig.com.br/bancodeimagens/2d/1g/2g/2d1g2grv04qcdqimis52hnovt.jpg',
+            'https://akphoto1.ask.fm/983/702/061/-269996976-1t82oha-33a77r57nn9nj0p/original/wp_ss_20150708_0002.png',
+            'http://i0.statig.com.br/bancodeimagens/52/yu/dd/52yuddvyje20qk9v0uwsrewc6.jpg',
+            'http://cdn.atl.clicrbs.com.br/wp-content/uploads/sites/23/2015/07/41.jpg'
         ],
 
         handleImages : function (lstImgs, time)
@@ -109,7 +88,7 @@
 
     //Run on jQuery ready
     $(function(){
-        self.handleImages(self.nVampetaImgs, 3000);
-     	self.handleLogo(self.nVampetaBackgrounds, 3000);
+        self.handleImages(self.nJacquinImgs, 3000);
+     	self.handleLogo(self.nJacquinBackgrounds, 3000);
     });
 })(jQuery);
