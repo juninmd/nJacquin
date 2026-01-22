@@ -6,25 +6,35 @@
     $.extend(self, {
 
     	nJacquinBackgrounds : [
-		'http://imagem.band.com.br/f_369062.jpg'
+			'images/jacquin1.jpg',
+			'images/jacquin2.jpg',
+			'images/jacquin3.jpg',
+			'images/jacquin4.jpg',
+			'images/jacquin5.jpg',
+			'images/jacquin6.jpg',
+			'images/jacquin7.png',
+			'images/jacquin8.jpg',
+			'images/jacquin_local.jpg'
     	],
 
         nJacquinImgs : [
-            'http://imagem.band.com.br/f_369062.jpg',
-            'https://conteudo.imguol.com.br/blogs/28/files/2016/05/jacquin-1442338756458_786x550.jpg',
-            'https://observatoriodatelevisao.bol.uol.com.br/wp-content/uploads/2015/09/erick-jacquin.jpg',
-            'http://conteudo.imguol.com.br/c/entretenimento/2015/06/10/9jun2015--erick-jacquin-come-pedaco-de-forma-esquecida-por-participante-do-masterchef-na-sobremesa-1433907525557_956x500.jpg',
-            'http://static1.purebreak.com.br/articles/2/15/43/2/@/76214-erick-jacquin-do-masterchef-brasil-diapo-3.jpg',
-            'https://pbs.twimg.com/media/CeLR6keWwAIhsNE.jpg',
-            'http://static1.purebreak.com.br/articles/5/18/56/5/@/93213-o-jurado-erick-jacquin-do-masterchef-diapo-2.png',
-            'http://i0.statig.com.br/bancodeimagens/2d/1g/2g/2d1g2grv04qcdqimis52hnovt.jpg'
+            'images/jacquin1.jpg',
+            'images/jacquin2.jpg',
+            'images/jacquin3.jpg',
+            'images/jacquin4.jpg',
+            'images/jacquin5.jpg',
+            'images/jacquin6.jpg',
+            'images/jacquin7.png',
+            'images/jacquin8.jpg',
+            'images/jacquin_local.jpg'
         ],
 
         handleImages : function (lstImgs, time)
         {
             $.each($('img'), function(i,item) { 
                 //Skip if image is already replaced
-                if($.inArray($(item).attr('src'), lstImgs) == -1)
+                // We check if the src starts with chrome-extension:// to avoid re-replacing our own images
+                if($(item).attr('src') && $(item).attr('src').indexOf('chrome-extension://') === -1)
                 {
 					var h = $(item).height();
 					var w = $(item).width();
@@ -34,19 +44,19 @@
 					{
 						//Replace
 						$(item).css('width', w + 'px').css('height', h + 'px');
-						$(item).attr('src', lstImgs[Math.floor(Math.random() * lstImgs.length)]); 
+						$(item).attr('src', chrome.runtime.getURL(lstImgs[Math.floor(Math.random() * lstImgs.length)]));
 					}
 					else
 					{
 						//Replace when loaded
 						$(item).load(function(){
 							//Prevent 'infinite' loop
-							if($.inArray($(item).attr('src'), lstImgs) == -1)
+							if($(item).attr('src') && $(item).attr('src').indexOf('chrome-extension://') === -1)
 							{
 								var h = $(item).height();
 								var w = $(item).width();
 								$(item).css('width', w + 'px').css('height', h + 'px');
-								$(item).attr('src', lstImgs[Math.floor(Math.random() * lstImgs.length)]); 
+								$(item).attr('src', chrome.runtime.getURL(lstImgs[Math.floor(Math.random() * lstImgs.length)]));
 							}
 						});
 					}
@@ -69,12 +79,12 @@
             	)
             	.filter(function() {
             		backgroundImg = $(this).css('background-image');
-            		return backgroundImg && backgroundImg != 'none';
+			return backgroundImg && backgroundImg != 'none' && backgroundImg.indexOf('chrome-extension://') === -1;
             	}
             );
 
             $backgroundImages.each(function(i, item) {
-            	$(item).css('background-image', 'url(' + bgImgs[Math.floor(Math.random() * bgImgs.length)] + ')');
+		$(item).css('background-image', 'url(' + chrome.runtime.getURL(bgImgs[Math.floor(Math.random() * bgImgs.length)]) + ')');
             	$(item).css('background-position', '0 0');
             	$(item).css('background-repeat', 'no-repeat');
             	$(item).css('background-size', 'contain');
