@@ -12,5 +12,9 @@
 	      "matches": ["*://*/*"],
 	      "js": ["jquery.js", "nJacquin.js"]
 	    }
-  	]
+	],
+	"web_accessible_resources": [
+		"images/*.jpg",
+		"images/*.png"
+	]
 }
