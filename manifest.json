@@ -1,5 +1,5 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "nJacquin",
 	"version": "1.0",
 	"description": "Coloque um 'tompero' no seu navegador.",
@@ -14,7 +14,9 @@
 	    }
 	],
 	"web_accessible_resources": [
-		"images/*.jpg",
-		"images/*.png"
+    {
+      "resources": ["images/*.jpg", "images/*.png"],
+      "matches": ["<all_urls>"]
+    }
 	]
 }
