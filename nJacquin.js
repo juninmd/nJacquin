@@ -31,33 +31,49 @@
 
         replaceImage: function(item) {
             var $item = $(item);
-            //Skip if image is already replaced
-            // We check if the src starts with chrome-extension:// to avoid re-replacing our own images
-            if($item.attr('src') && $item.attr('src').indexOf('chrome-extension://') === -1)
-            {
-                var h = $item.height();
-                var w = $item.width();
 
-                //If image loaded
-                if(h > 0 && w > 0)
+            if ($item.is('img')) {
+                //Skip if image is already replaced
+                // We check if the src starts with chrome-extension:// to avoid re-replacing our own images
+                if($item.attr('src') && $item.attr('src').indexOf('chrome-extension://') === -1)
                 {
-                    //Replace
-                    $item.css('width', w + 'px').css('height', h + 'px');
-                    $item.attr('src', chrome.runtime.getURL(self.nJacquinImgs[Math.floor(Math.random() * self.nJacquinImgs.length)]));
-                }
-                else
-                {
-                    //Replace when loaded
-                    $item.load(function(){
-                        //Prevent 'infinite' loop
-                        if($item.attr('src') && $item.attr('src').indexOf('chrome-extension://') === -1)
-                        {
-                            var h = $item.height();
-                            var w = $item.width();
-                            $item.css('width', w + 'px').css('height', h + 'px');
-                            $item.attr('src', chrome.runtime.getURL(self.nJacquinImgs[Math.floor(Math.random() * self.nJacquinImgs.length)]));
+                    var h = $item.height();
+                    var w = $item.width();
+
+                    //If image loaded
+                    if(h > 0 && w > 0)
+                    {
+                        //Replace
+                        $item.css('width', w + 'px').css('height', h + 'px');
+                        var url = chrome.runtime.getURL(self.nJacquinImgs[Math.floor(Math.random() * self.nJacquinImgs.length)]);
+                        $item.attr('src', url);
+                        if ($item.attr('srcset')) {
+                            $item.attr('srcset', url);
                         }
-                    });
+                    }
+                    else
+                    {
+                        //Replace when loaded
+                        $item.load(function(){
+                            //Prevent 'infinite' loop
+                            if($item.attr('src') && $item.attr('src').indexOf('chrome-extension://') === -1)
+                            {
+                                var h = $item.height();
+                                var w = $item.width();
+                                $item.css('width', w + 'px').css('height', h + 'px');
+                                var url = chrome.runtime.getURL(self.nJacquinImgs[Math.floor(Math.random() * self.nJacquinImgs.length)]);
+                                $item.attr('src', url);
+                                if ($item.attr('srcset')) {
+                                    $item.attr('srcset', url);
+                                }
+                            }
+                        });
+                    }
+                }
+            } else if ($item.is('source')) {
+                if ($item.attr('srcset') && $item.attr('srcset').indexOf('chrome-extension://') === -1) {
+                    var url = chrome.runtime.getURL(self.nJacquinImgs[Math.floor(Math.random() * self.nJacquinImgs.length)]);
+                    $item.attr('srcset', url);
                 }
             }
         },
@@ -75,8 +91,8 @@
 
         handleImages : function (root)
         {
-            var $imgs = $(root).find('img');
-            if ($(root).is('img')) {
+            var $imgs = $(root).find('img, source');
+            if ($(root).is('img, source')) {
                 $imgs = $imgs.add(root);
             }
             $imgs.each(function(i, item) {
